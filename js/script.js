@@ -74,11 +74,11 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         showResult: function () {
             valueBudgetMonth.value = this.budgetMonth;
-            valueBudgetDay.value = Math.ceil(appData.budgetDay);
+            valueBudgetDay.value = Math.ceil(this.budgetDay);
             valueExpensesMonth.value = this.expensesMonth;
             valueAdditionalExpenses.value = this.addExpenses.join(', ');
             additionalIncomeValue.value = this.addIncome.join(', ');
-            valueTargetMonth.value = Math.ceil(appData.targetMonth);
+            valueTargetMonth.value = Math.ceil(this.targetMonth);
             valueIncomePeriod.value = this.calcSavedMoney();
             range.addEventListener('change', function(){
                 valueIncomePeriod.value = appData.calcSavedMoney();
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         getBudget: function () { //!вычисляем бюджет на месяц
             this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
-            return appData.budgetMonth;
+            return this.budgetMonth;
         },
         getTargetMonth: function () { //! за сколько накопим
             this.targetMonth = target.value / this.budgetMonth;
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         getKeyStart: function () { // TODO Ключ 
             if (isNumber(inputMonthSum.value) && inputMonthSum.value !== "") {
-                appData.budget = +inputMonthSum.value;
+                this.budget = +inputMonthSum.value;
                 this.start();
             } else {
                 alert('not a number');
